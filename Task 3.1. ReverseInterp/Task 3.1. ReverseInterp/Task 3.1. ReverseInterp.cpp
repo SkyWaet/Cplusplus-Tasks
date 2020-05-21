@@ -83,8 +83,74 @@ void Neuton(double **table, int sizeOfTable, double F) {
 	cout << " Значение F: " << setprecision(15) << F<< endl;
 	cout << "Искомый аргумент функции: " << setprecision(15) << Pn << endl;
 	cout << " Значение f(Pn(F)) в форме Ньютона в точке " << setprecision(15) << F << ": " << setprecision(15) << function(Pn) << endl;
-	cout << " Значение погрешности: " << setprecision(15) << fabs(function(Pn) - F) << endl;
+	cout << " Модуль невязки: " << setprecision(15) << fabs(function(Pn) - F) << endl;
 	system("pause");
+}
+
+double * NeutonPolynom(double **table, int sizeOfTable) {
+	double **neutonTable = new double*[sizeOfTable];
+	for (int i = 0; i < sizeOfTable; i++) {
+		neutonTable[i] = new double[sizeOfTable];
+	}
+
+	for (int i = 0; i < sizeOfTable; i++) {
+		neutonTable[i][0] = table[i][0];
+		neutonTable[i][1] = table[i][1];
+	}
+
+	for (int j = 2; j < sizeOfTable; j++) {
+		for (int i = 0; i < sizeOfTable - j + 1; i++) {
+			neutonTable[i][j] = (neutonTable[i + 1][j - 1] - neutonTable[i][j - 1]) / (table[i + j - 1][0] - table[i][0]);
+		}
+	}
+	double *coefficients = new double[sizeOfTable];
+	for (int i = 1; i < sizeOfTable; i++) {
+		coefficients[i-1] = neutonTable[0][i];
+	}
+	return coefficients;
+}
+
+double NeutonValue(double **table,double *coefficients, int sizeOfTable, double point) {
+	
+	double Pn = coefficients[0];
+	for (int i = 1; i < sizeOfTable-1; i++) {
+		Pn += coefficients[i] * polynom(table, point, i+1);
+	}
+	return Pn;
+}
+
+
+void bisection(double **table, double *coefficients,int sizeOfTable,double F,double lb,double rb) {
+	double c = 0;
+	double epsilon;
+	double amOfParts = 100;
+	cout << " Введите желаемую точность вычислений: ";
+	cin >> epsilon;
+	double a = lb, b = rb;
+	double h = (b - a) / amOfParts;
+	b = a + h;
+	for (int i = 0; i < amOfParts; i++) {
+		if ((NeutonValue(table, coefficients, sizeOfTable, a) - F)*(NeutonValue(table, coefficients, sizeOfTable, b) - F) <= 0) {
+		    int N = 0;			
+			//cout << "Начальное приближение: " << (a + b) / 2 << endl;
+			while (fabs(b - a) >= 2 * epsilon)
+			{
+				c = (a + b) / 2;
+				if ((NeutonValue(table, coefficients, sizeOfTable, a) - F)*(NeutonValue(table, coefficients, sizeOfTable, c) - F) <= 0) b = c;
+				else if ((NeutonValue(table, coefficients, sizeOfTable, c) - F)*(NeutonValue(table, coefficients, sizeOfTable, b) - F) < 0) a = c;
+				N++;
+
+			}
+			cout << " Значение F: " << setprecision(15) << F << endl;
+			cout << " Искомый аргумент (x): " << setprecision(15) << c << endl;
+			cout << " Значение функции в точке " << setprecision(15) << c << ": " << setprecision(15) << function(c) << endl;
+			cout << " Модуль невязки: " << setprecision(15) << fabs(function(c) - F) << endl;
+			system("pause");
+		}
+		a = b;
+		b = a + h;
+	}
+	
 }
 
 void printTable(double ** table, int sizeOfTable, int tableType) {
@@ -120,13 +186,20 @@ void printTable(double ** table, int sizeOfTable, int tableType) {
 	
 	cout << setfill(' ');
 }
+
+void printHeader() {
+	cout << " Задача 3.1. Обратное интерполирование. Вариант 7." << endl;
+	cout << " Функция: e^(-x) - x^2/2" << endl << endl;;
+}
+
 void printMenu() {
 	cout << "Меню" << endl;
 	cout << "1.Выбрать число значений в таблице" << endl;
 	cout << "2.Выбрать левую границу" << endl;
 	cout << "3.Выбрать правую границу" << endl;
 	cout << "4.Выбрать точку обратного интерполирования" << endl;
-	cout << "5.Выполнить обратное интерполирование" << endl;
+	cout << "5.Выбрать метод обратного интерполирования" << endl;
+	cout << "6.Выполнить обратное интерполирование" << endl;
 	cout << "0.Завершение работы" << endl;
 	cout << "Выберите действие: ";
 }
@@ -136,24 +209,33 @@ int main() {
 	HWND window_header = GetConsoleWindow();
 	SetWindowPos(window_header, HWND_TOP, 0, 0, 1168, 768, NULL);
 	int sizeOfTable;
-	double a, b, F;
+	double a, b, F,method;
+	
 	double** table = createTable(1, 1, 1);
 	bool isSizeSet = false;
 	bool isAset = false;
 	bool isBset= false;
 	bool isFset = false;
 	bool isTableCreated = false;
+	bool isMethodChosen = false;
+	int amOfParts = 100;
 	int option = 1;
 	while (option != 0) {
+		printHeader();
 		if (isSizeSet)cout << "Текущее число элементов: " << sizeOfTable << endl;
 		if (isAset)cout << "Текущий левая граница: " << a << endl;
 		if (isBset)cout << "Текущая правая граница: " << b << endl;
 		if (isFset)cout << "Текущая точка обратного интерполирования: " << F << endl;
+		if (isMethodChosen) {
+			if (method == 1) cout << "Текущий метод: построение ИП для обратной функции" << endl;
+			else cout << "Текущий метод: построение ИП для функции и последующее решение уравнения" << endl;
+		}
 		if (isTableCreated) printTable(table, sizeOfTable, 1);
+		
 		printMenu();
 		cin >> option;
 
-		while (option < 0 || option>5) {
+		while (option < 0 || option>6) {
 			cout << "Выберите корректную опцию: ";
 			cin >> option;
 		}
@@ -209,18 +291,52 @@ int main() {
 			break;
 		}
 		case 5: {
+			if (isMethodChosen) {
+				if (method == 1) cout << "Текущий метод: построение ИП для обратной функции" << endl;
+				else cout << "Текущий метод: построение ИП для функции и последующее решение уравнения" << endl;
+			}
+			cout << "1. Построение ИП для обратной функции" << endl;
+			cout << "2. Построение ип для функции и последующее решение уравнения" << endl;
+			cout << "Выберите действие: ";
+			cin >> method;
+			while (method< 1 || method>2) {
+				cout << "Введите корректное действие: ";
+				cin >> method;
+			}
+			isMethodChosen = true;
+			break;
+		}
+		
+		case 6: {
 			if (isFset) {
-				if (isTableCreated) {
-					double **reversedTable = reverseTable(table, sizeOfTable);
-					cout << "Обращенная таблица: " << endl;
-					tableSort(reversedTable, sizeOfTable, F);
-					printTable(reversedTable, sizeOfTable, 2);
-					Neuton(reversedTable, sizeOfTable, F);
+				if (isTableCreated&&isMethodChosen) {
+					if(method==1){
+						double **reversedTable = reverseTable(table, sizeOfTable);
+						cout << "Обращенная таблица: " << endl;
+						tableSort(reversedTable, sizeOfTable, F);
+						printTable(reversedTable, sizeOfTable, 2);
+						Neuton(reversedTable, sizeOfTable, F);
+					}
+					else {
+						double a = table[0][0];
+						double b = table[sizeOfTable - 1][0];
+						double **reversedTable = reverseTable(table, sizeOfTable);
+						tableSort(reversedTable, sizeOfTable, F);
+						double **newTable = reverseTable(reversedTable,sizeOfTable);
+						//tableSort(newTable, sizeOfTable, F);
+						double *coeff = NeutonPolynom(newTable, sizeOfTable);
+						printTable(newTable, sizeOfTable, 1);
+						bisection(newTable, coeff,sizeOfTable,F,a,b);
+						
+					}
 				}
-				else {
+				else if(isMethodChosen){
 					if (!isAset)cout << " Не задана левая граница" << endl;
 					else if (!isBset)cout << " Не задана правая граница" << endl;
 					else if (!isSizeSet)cout << " Не задан размер таблицы" << endl;
+				}
+				else if (isTableCreated) {
+					cout << "Не выбран метод решения";
 				}
 			}
 			else cout << "Не выбрана точка обратного интерполирования" << endl;

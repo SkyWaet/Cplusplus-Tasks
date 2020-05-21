@@ -1,0 +1,10 @@
+﻿  Task 4 Integrals.cpp
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(371): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(376): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(381): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(386): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(391): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(401): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(246): warning C4101: rightBorder: неиспользованная локальная переменная
+d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(246): warning C4101: leftBorder: неиспользованная локальная переменная
+  Task 5 Integrals.vcxproj -> D:\учеба\Выч практикум\Cplusplus-Tasks\Task 4 Integrals\Debug\Task 4 Integrals.exe

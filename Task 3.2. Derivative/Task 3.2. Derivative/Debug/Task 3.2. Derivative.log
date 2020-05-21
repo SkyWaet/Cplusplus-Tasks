@@ -1,5 +1,1 @@
-﻿  Task 3.2. Derivative.cpp
-d:\учеба\лебедева\task 3.2. derivative\task 3.2. derivative\task 3.2. derivative.cpp(37): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
-d:\учеба\лебедева\task 3.2. derivative\task 3.2. derivative\task 3.2. derivative.cpp(133): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-d:\учеба\лебедева\task 3.2. derivative\task 3.2. derivative\task 3.2. derivative.cpp(165): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  Task 3.2. Derivative.vcxproj -> D:\учеба\Лебедева\Task 3.2. Derivative\Debug\Task 3.2. Derivative.exe
+﻿  Task 3.2. Derivative.vcxproj -> D:\учеба\Выч практикум\Cplusplus-Tasks\Task 3.2. Derivative\Debug\Task 3.2. Derivative.exe

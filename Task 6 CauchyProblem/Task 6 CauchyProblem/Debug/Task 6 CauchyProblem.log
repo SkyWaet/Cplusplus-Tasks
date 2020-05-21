@@ -1,0 +1,11 @@
+﻿  Task 6 CauchyProblem.cpp
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(45): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(89): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(95): warning C4101: yi: неиспользованная локальная переменная
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(105): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(122): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(128): warning C4101: yi: неиспользованная локальная переменная
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(142): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(148): warning C4101: yi: неиспользованная локальная переменная
+d:\учеба\выч практикум\cplusplus-tasks\task 6 cauchyproblem\task 6 cauchyproblem\task 6 cauchyproblem.cpp(36): warning C4715: derivative: значение возвращается не при всех путях выполнения
+  Task 6 CauchyProblem.vcxproj -> D:\учеба\Выч практикум\Cplusplus-Tasks\Task 6 CauchyProblem\Debug\Task 6 CauchyProblem.exe

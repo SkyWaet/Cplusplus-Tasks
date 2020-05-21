@@ -103,6 +103,10 @@ void printTable(double ** table, int sizeOfTable, int amOfColumns) {
 	}
 	cout << setfill(' ');
 }
+void printHeader() {
+	cout << " Задача 3.2. Численное дифференцирование. Вариант 7." << endl;
+	cout << " Функция: e^(4.5*x)" << endl << endl;;
+}
 void printMenu() {
 	cout << "Меню" << endl;
 	cout << "1.Выбрать число значений в таблице" << endl;
