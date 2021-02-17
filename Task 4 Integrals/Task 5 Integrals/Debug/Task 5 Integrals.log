@@ -1,4 +1,5 @@
-﻿  Task 4 Integrals.cpp
+﻿  pch.cpp
+  Task 4 Integrals.cpp
 d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(371): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
 d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(376): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
 d:\учеба\выч практикум\cplusplus-tasks\task 4 integrals\task 5 integrals\task 4 integrals.cpp(381): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных

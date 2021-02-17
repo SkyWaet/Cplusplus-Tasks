@@ -16,7 +16,7 @@ struct polynom {
 };
 
 double f(double x, polynom otpional) {
-	return exp(x);
+	return sin(0.2+0.7*x)/(1.1-cos(1.3-0.4*x));
 }
 
 double F(double a, double b, polynom optional) {
